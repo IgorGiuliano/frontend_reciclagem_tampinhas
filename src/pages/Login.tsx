@@ -90,6 +90,7 @@ export default function Login() {
                     </button>
                 </div>
             </main>
+            <footer />
         </div>
     );
 }
