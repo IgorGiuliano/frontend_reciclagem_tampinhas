@@ -30,7 +30,7 @@
 
                 a {
                     font-size: 18;
-                    font-weight: 500;
+                    font-weight: 600;
                     text-decoration: none;
                     color: var(--white);
                 }
@@ -46,10 +46,21 @@
     
     .user-logout {
         display: flex;
-        justify-content: center;
         align-items: center;
         height: 10%;
         color: #f0f0f0;
+        
+        p {
+            font-size: 18px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        a {
+            padding: 20px;
+            text-decoration: none;
+            color: var(--white);
+        }
     }
 }
 

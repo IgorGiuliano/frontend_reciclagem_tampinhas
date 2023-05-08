@@ -1,0 +1,114 @@
+.wrapper-register {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+
+  header {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(54, 54, 54);
+    color: aliceblue;
+
+    a {
+      padding-left: 5vw;
+      font-weight: 600;
+      font-size: 20px;
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  main {
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .container-reg {
+      width: 70%;
+      display: flex;
+      justify-content: center;
+
+      .container-registro {
+        width: 95%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #b6b6b6;
+
+        form {
+          h1 {
+            font-size: 36px;
+            color: rgba(255, 255, 255, 1);
+            padding-top: 45px;
+            padding-bottom: 45px;
+            align-items: center;
+          }
+
+          .campos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .mediumInput:first-of-type {
+              margin-top: 0;
+            }
+
+            .mediumInput {
+              width: 400px;
+              height: 50px;
+
+              border-radius: 15px;
+              border-style: none;
+
+              margin-right: 2.5px;
+              margin-left: 2.5px;
+              margin-top: 15px;
+
+              text-align: center;
+            }
+          }
+
+          button {
+            width: 400px;
+            height: 50px;
+
+            margin-top: 25px;
+
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+
+            color: rgba(255, 255, 255, 1);
+
+            border-radius: 15px;
+            border-style: none;
+            background-color: rgba(28, 223, 197, 0.7);
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+
+  footer {
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(54, 54, 54);
+    color: aliceblue;
+  }
+}

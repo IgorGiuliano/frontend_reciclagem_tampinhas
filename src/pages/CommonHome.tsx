@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/pages/CommonHome.scss';
 
 export default function CommonHome() {
     return (

@@ -1,6 +1,7 @@
 import React, { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import '../styles/pages/RegisterUser.scss';
 
 export default function RegisterUser() {
     const role = 'NORMAL';
@@ -24,11 +25,11 @@ export default function RegisterUser() {
         }
 
         const response = await api.post(
-            '/register-user',
+            '/register_user',
             {
                 email,
                 password,
-                confirmPassword,
+                passwordConfirmation: confirmPassword,
                 name,
                 lastName,
                 cpf,
@@ -44,7 +45,7 @@ export default function RegisterUser() {
     }
 
     return (
-        <div className="wrapper">
+        <div className="wrapper-register">
             <header>
                 <a href="/">
                     Projeto Integrador VII
@@ -128,6 +129,9 @@ export default function RegisterUser() {
                                     required
                                 />
                             </div>
+                            <button type="submit">
+                                Cadastrar
+                            </button>
                         </form>
                     </div>
                 </div>

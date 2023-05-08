@@ -6,9 +6,14 @@ import React, {
 } from 'react';
 import api from '../services/api';
 
+interface IUser {
+    name: string,
+    id: string,
+    email: string
+}
 interface IAuthContextData {
     signed: boolean;
-    user: object | null;
+    user: IUser | null;
     login(user: object): Promise<void>;
     Logout(): void;
 }
@@ -20,18 +25,16 @@ interface BaseLayoutProps {
 const AuthContext = createContext({} as IAuthContextData);
 
 export const AuthProvider: React.FunctionComponent<BaseLayoutProps> = ({ children }) => {
-    const [user, setUser] = useState<object | null>(null);
+    const [user, setUser] = useState<IUser | null>(null);
 
     function verifyAuthenticated() {
-        const storagedUser = sessionStorage.getItem('@App:cod');
         const storagedToken = sessionStorage.getItem('@App:token');
 
-        if (storagedToken && storagedUser) {
-            if (storagedToken === undefined || storagedUser === undefined) {
+        if (storagedToken) {
+            if (storagedToken === undefined) {
                 sessionStorage.clear();
             }
 
-            setUser({ cod: storagedUser });
             api.defaults.headers.common.Authorization = `Bearer ${storagedToken}`;
         }
     }
@@ -46,10 +49,9 @@ export const AuthProvider: React.FunctionComponent<BaseLayoutProps> = ({ childre
             // eslint-disable-next-line no-alert
             window.alert(`Ocorreu um erro: ${response.data.Error}`);
         } else {
-            setUser(response.data.user);
             api.defaults.headers.common.Authorization = `Bearer ${response.data.logged.token}`;
-            sessionStorage.setItem('@App:cod', response.data.logged.data.id);
             sessionStorage.setItem('@App:token', response.data.logged.token);
+            setUser(response.data.logged.data);
 
             verifyAuthenticated();
         }

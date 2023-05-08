@@ -7,12 +7,15 @@ import CommonHome from './pages/CommonHome';
 import Login from './pages/Login';
 import './styles/Global.scss';
 import Dashboard from './pages/Dashboard';
+import Machines from './pages/Machines';
+import Users from './pages/Users';
+import RegisterUser from './pages/RegisterUser';
+import { AuthProvider } from './contexts/auth';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
-    const storagedUser = sessionStorage.getItem('@App:cod');
     const storagedToken = sessionStorage.getItem('@App:token');
 
-    if (!storagedToken && !storagedUser) {
+    if (!storagedToken) {
         return <Navigate to="/unauthorized" replace />;
     }
 
@@ -21,22 +24,40 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
 
 export default function App() {
     return (
-        <Router>
-            <Routes>
-                <Route path="/" element={<CommonHome />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/dashboard" element={<Dashboard />} />
-                <Route
-                    path="/protegida"
-                    element={(
-                        <ProtectedRoute>
-                            <CommonHome />
-                        </ProtectedRoute>
-                    )}
-                />
-                <Route path="/unauthorized" element={<CommonHome />} />
-                <Route path="/not-found" element={<CommonHome />} />
-            </Routes>
-        </Router>
+        <AuthProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<CommonHome />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<RegisterUser />} />
+                    <Route
+                        path="/dashboard"
+                        element={(
+                            <ProtectedRoute>
+                                <Dashboard />
+                            </ProtectedRoute>
+                        )}
+                    />
+                    <Route
+                        path="/machines"
+                        element={(
+                            <ProtectedRoute>
+                                <Machines />
+                            </ProtectedRoute>
+                        )}
+                    />
+                    <Route
+                        path="/users"
+                        element={(
+                            <ProtectedRoute>
+                                <Users />
+                            </ProtectedRoute>
+                        )}
+                    />
+                    <Route path="/unauthorized" element={<CommonHome />} />
+                    <Route path="/not-found" element={<CommonHome />} />
+                </Routes>
+            </Router>
+        </AuthProvider>
     );
 }

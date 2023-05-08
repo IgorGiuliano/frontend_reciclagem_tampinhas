@@ -1,5 +1,6 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/pages/Login.scss';
 import { useAuth } from '../contexts/auth';
 
 export default function Login() {
@@ -32,6 +33,7 @@ export default function Login() {
         if (password.length < 6) {
             // window.alert('Senha com menos de 6 caracteres, favor revisar');
         } else {
+            console.log();
             await login({
                 email,
                 password
@@ -40,7 +42,7 @@ export default function Login() {
     }
 
     return (
-        <div className="wrapper">
+        <div className="wrapper-login">
             <header>
                 <a href="/">
                     Projeto Integrador VII
@@ -77,17 +79,17 @@ export default function Login() {
                             <a href="/login">Esqueci minha senha</a>
                         </form>
                     </div>
-                </div>
-                <div className="container-register">
-                    <h1>
-                        REGISTRE-SE
-                    </h1>
-                    <p>
-                        Não possui uma conta? Crie uma agora mesmo!
-                    </p>
-                    <button onClick={() => routeChange('/register')}>
-                        Registre-se
-                    </button>
+                    <div className="container-register">
+                        <h1>
+                            REGISTRE-SE
+                        </h1>
+                        <p>
+                            Não possui uma conta? Crie uma agora mesmo!
+                        </p>
+                        <button onClick={() => routeChange('/register')}>
+                            Registre-se
+                        </button>
+                    </div>
                 </div>
             </main>
             <footer />
