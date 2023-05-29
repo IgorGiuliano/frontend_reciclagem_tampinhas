@@ -16,7 +16,7 @@
 
         ul {
             margin-top: 20%;
-            
+
             li:first-child {
                 margin-top: 0;
             }
@@ -24,7 +24,7 @@
             li {
                 margin-top: 20px;
 
-                #dashboard {
+                #user {
                     color: #6254FF;
                 }
 
@@ -34,7 +34,7 @@
                     text-decoration: none;
                     color: var(--white);
                 }
-    
+
                 a:visited {
                     text-decoration: none;
                     color: var(--white);
@@ -43,7 +43,7 @@
         }
 
     }
-    
+
     .user-logout {
         display: flex;
         justify-content: center;
@@ -75,12 +75,72 @@
         }
     }
 
-    .container-dados {
+    .container-users {
         display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
+        justify-content: center;
         height: 80vh;
-        
+        width: 75%;
+        margin-left: 50px;
+        background-color: #39394B;
+        border-radius: 10px;
+
+        table {
+            width: 90%;
+            height: 90%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 25px;
+
+            thead {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 10%;
+                width: 95%;
+                color: var(--white);
+
+                tr {
+                    justify-content: space-between;
+                    text-align: center;
+                    display: flex;
+                    height: 20px;
+                    width: 100%;
+                    color: #f0f0f0;
+
+                    th {
+                        width: 100%;
+                        text-align: center;
+                    }
+
+                }
+
+            }
+
+            tbody {
+                display: flex;
+                justify-content: center;
+                height: 90%;
+                width: 95%;
+
+                tr {
+                    justify-content: space-between;
+                    text-align: center;
+                    display: flex;
+                    height: 20px;
+                    width: 100%;
+                    color: #f0f0f0;
+
+                    td {
+                        width: 100%;
+                        text-align: center;
+                    }
+
+                }
+
+            }
+        }
+
     }
 
 }

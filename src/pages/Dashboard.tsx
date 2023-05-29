@@ -65,7 +65,8 @@ export default function Dashboard() {
             {
                 label: 'Quantidade',
                 data: graphCapData,
-                backgroundColor: 'rgba(255, 99, 132, 1)'
+                backgroundColor: 'rgba(255, 105, 180, 1)',
+                borderColor: 'rgb(98, 84, 255)'
             }
         ]
     };
@@ -108,7 +109,10 @@ export default function Dashboard() {
                 const hours = new Date(item.createdAt).getHours();
                 const minutes = new Date(item.createdAt).getMinutes();
                 const seconds = new Date(item.createdAt).getSeconds();
-                createdAt.push(`${hours}:${minutes}:${seconds}`);
+                const month = new Date(item.createdAt).getMonth();
+                const dia = new Date(item.createdAt).getDate();
+                const year = new Date(item.createdAt).getFullYear();
+                createdAt.push(`${dia}/${month}/${year} ${hours}:${minutes}:${seconds}`);
                 return null;
             });
             setGraphCapData(count.reverse());
@@ -144,15 +148,15 @@ export default function Dashboard() {
                             </a>
                         </li>
                         <li>
-                            <a href="/users" id="user">
+                            <a href="/users">
                                 Users
                             </a>
                         </li>
-                        <li>
-                            <a href="/machines" id="machine">
+                        {/* <li>
+                            <a href="/machines">
                                 Machines
                             </a>
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div className="user-logout">
@@ -178,22 +182,48 @@ export default function Dashboard() {
                 <div className="container-dados">
                     <div className="vertical-boxes">
                         <div className="box">
-                            <p>Total de tampinhas coletadas neste mês</p>
-                            <h2>
-                                {totalCaps}
-                            </h2>
+                            <div className="text">
+                                <p>Total de tampinhas coletadas neste mês</p>
+                                <h2>
+                                    {totalCaps}
+                                </h2>
+                            </div>
                         </div>
                         <div className="box">
-                            <h2>
-                                {totalGreen}
-                            </h2>
-                            <p>Tampinhas verdes coletadas neste mês</p>
+                            <div className="color-green" />
+                            <div className="text">
+                                <h2>
+                                    {totalGreen}
+                                </h2>
+                                <p>Tampinhas verdes coletadas neste mês</p>
+                            </div>
                         </div>
                         <div className="box">
-                            <h2>
-                                {totalRed}
-                            </h2>
-                            <p>Tampinhas vermelhas coletadas neste mês</p>
+                            <div className="color-green" />
+                            <div className="text">
+                                <h2>
+                                    {`${(totalGreen * 1.5).toFixed(2)} g`}
+                                </h2>
+                                <p>Peso estimado</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="color-red" />
+                            <div className="text">
+                                <h2>
+                                    {totalRed}
+                                </h2>
+                                <p>Tampinhas vermelhas coletadas neste mês</p>
+                            </div>
+                        </div>
+                        <div className="box">
+                            <div className="color-red" />
+                            <div className="text">
+                                <h2>
+                                    {`${(totalRed * 1.5).toFixed(2)} g`}
+                                </h2>
+                                <p>Peso estimado</p>
+                            </div>
                         </div>
                         {/* <div className="box">
                             <h2>
@@ -225,6 +255,7 @@ export default function Dashboard() {
                                     options={
                                         options
                                     }
+                                    className="linha"
                                 />
                             </div>
                         </div>
