@@ -27,8 +27,8 @@ export default function App() {
         <AuthProvider>
             <Router>
                 <Routes>
-                    <Route path="/" element={<CommonHome />} />
-                    <Route path="/login" element={<Login />} />
+                    {/* <Route path="/" element={<CommonHome />} /> */}
+                    <Route path="/" element={<Login />} />
                     <Route path="/register" element={<RegisterUser />} />
                     <Route
                         path="/dashboard"
